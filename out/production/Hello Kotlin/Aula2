@@ -1,0 +1,90 @@
+var lotsOfFish : MutableList<String?> = mutableListOf() //elementos da lista podem ser nulos, mas lista em si, não pode
+var lotsOfFish2 : MutableList<String>? = mutableListOf() //elementos da lista não podem ser nulos, mas a lista em si, pode
+var lotsOfFish3 : MutableList<String?>? = mutableListOf() //elementos e a lista podem ser nulos
+
+listOf(null,null) //lista com dois elementos que sejam nulos
+[null, null]
+var list: List<Int?> = listOf(null, null) //lista com dois elementos que sejam nulos
+var list2:List<Int>? = null //lista com dois elementos que sejam nulos
+
+lotsOfFish = null //não permite lista ser nula
+lotsOfFish.add(null) //elementos podem ser nulos
+lotsOfFish
+
+lotsOfFish2.add(null) //a lista pode ser nula, então para chamar o add é necessário a checagem de nulidade "?"
+lotsOfFish2?.add("1") //usando "?" não irá dar erro caso o lotsOfFish2 seja nulo, porém caso seja nulo, não chamará add
+lotsOfFish2
+
+lotsOfFish2 = null
+lotsOfFish2?.add("2") //usando "?" não irá dar erro caso o lotsOfFish2 seja nulo, porém caso seja nulo, não chamará add
+lotsOfFish2
+
+lotsOfFish2 = mutableListOf()
+lotsOfFish2?.add(null) //vai dar erro pois o elemento da lista não pode ser null
+
+lotsOfFish3.add(null) //a lista pode ser nula, então para chamar o add é necessário a checagem de nulidade "?"
+lotsOfFish3?.add("1") //usando "?" não irá dar erro caso o lotsOfFish3 seja nulo, porém caso seja nulo, não chamará add
+lotsOfFish3
+
+lotsOfFish3 = null
+lotsOfFish3?.add(null)
+lotsOfFish3
+
+lotsOfFish3 = mutableListOf()
+lotsOfFish3?.add(null) //NÃO vai dar erro pois o elemento da lista pode ser null
+lotsOfFish3
+
+lotsOfFish3 = null
+lotsOfFish3!!.add(null) //vai dar NPE, pois a lista foi declarada como podendo ser nula, e o "!!" diz para o compilador não te obrigar a utilizar o "?"
+
+-> ex: Use uma verificação nula que aumente o valor em um se não for nulo. E, caso contrário, retorne 0 e imprima o resultado.
+var nullTest : Int? = null
+var nullTest2 : Int? = 1
+println(nullTest?.inc() ?:0) //.inc() -> incremento
+0
+println(nullTest2?.inc() ?:0)
+2
+
+ex:
+As declarações when no Kotlin são como declarações 'case' ou 'switch' em outras linguagens.
+Crie uma declaração when com três comparações:
+Se o comprimento do fishName for 0, imprima uma mensagem de erro.
+Se o comprimento estiver no intervalo entre 3 ... 12, imprima "Good fish name”
+
+val fishName = 10
+when(fishName){
+    0 -> println("Fish name cannot be empty")
+    in 3..12 -> println("Good fish name")
+    else -> "OK fish name"
+}
+--
+val array = Array(5) {it * 2}
+ println(array.asList())
+[0, 2, 4, 6, 8]
+--
+Crescente
+for(i in 1..5) print(i)
+12345
+
+Decrescente
+for (i in 5 downTo 1) print(i)
+54321
+
+Com espaço
+for(i in 3..6 step 2) print(i)
+35
+
+for (i in 'b'..'g') print(i)
+bcdefg
+--
+Exemplo de desafio
+Como você pode usar um loop for para criar (uma lista de) números entre 1 e 100 que sejam divisíveis por 7?
+
+for (i in 0..100 step 7) println(i.toString() + " - ")
+
+ou
+
+var list3 : MutableList<Int> = mutableListOf()
+for (i in 0..100 step 7) list3.add(i)
+print(list3)
+[0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98]

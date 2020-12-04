@@ -1,0 +1,24 @@
+Filtro - topico 16
+val spices = listOf("curry", "pepper", "cayenne", "ginger", "red curry", "green curry", "red pepper" )
+
+spices.filter { it.contains("curry") }.sortedBy { it.length }
+= [curry, red curry, green curry]
+spices.filter { it.startsWith('c') }
+= [curry, cayenne]
+spices.filter { it.startsWith('c').and(it.endsWith('e')) }
+= [cayenne]
+spices.take(3)
+= [curry, pepper, cayenne]
+spices.take(3).filter { it.startsWith('c') }
+= [curry, cayenne]
+
+// Lambda
+val random1 = random()
+val random2 = {random()}
+
+random1 tem um valor atribuído em tempo de compilação, e o valor nunca muda quando a variável
+for acessada.
+
+random2 tem um lambda atribuído em tempo de compilação, e o lambda é executado toda vez
+que a variável for referenciada, retornando um valor diferente
+
